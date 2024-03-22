@@ -1,0 +1,51 @@
+<html>
+
+<head>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-core.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-sankey.min.js"></script>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script>
+    anychart.onDocumentReady(function () {
+      //creating the data
+      const data = [
+        { from: 'Frontend Engineer', to: 'Applications', weight: 5 },
+        { from: 'Senior-Frontend Engineer', to: 'Applications', weight: 4 },
+        { from: 'Lead Frontend Engineer', to: 'Applications', weight: 1 },
+        { from: 'Staff-Backend Software Engineer', to: 'Applications', weight: 1 },
+        { from: 'Full-Stack Engineer', to: 'Applications', weight: 3 },
+        { from: 'Senior-Full-Stack Engineer', to: 'Applications', weight: 1 },
+        { from: 'Senior-Full-Stack-Staff Engineer', to: 'Applications', weight: 1 },
+        { from: 'Senior Software Engineer', to: 'Applications', weight: 7 },
+        { from: 'Staff-Software Engineer', to: 'Applications', weight: 3 },
+        { from: 'Lead Mobile Engineer', to: 'Applications', weight: 1 },
+        { from: 'Head of Product Engineering', to: 'Applications', weight: 1 },
+        { from: 'Engineering Manager', to: 'Applications', weight: 2 },
+        { from: 'Applications', to: 'Pending', weight: 21 },
+        { from: 'Applications', to: 'Interview no show', weight: 1 },
+        { from: 'Applications', to: 'Rejected', weight: 2 },
+        { from: 'Applications', to: '1st Interview', weight: 2 }
+      ]
+      // calling the Sankey function
+      var sankey_chart = anychart.sankey(data)
+      // add labels to each node
+      sankey_chart.node().labels().format(
+        "{%name}: {%value}"
+      )
+      // customizing the width of the nodes
+      sankey_chart.nodeWidth("50%")
+      // setting the chart title
+      sankey_chart.title("Software Engineering Job Hunt 2024")
+      // customizing the vertical padding of the nodes
+      sankey_chart.nodePadding(20)
+      // setting the container id
+      sankey_chart.container("container")
+      // initiating drawing the Sankey diagram
+      sankey_chart.draw()
+    });
+  </script>
+</body>
+
+</html>
